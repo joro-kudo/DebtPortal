@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="DebtPortal:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>DebtPortal</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="DebtPortal-1.war">
+      <element id="artifact" artifact-name="DebtPortal:war exploded" />
+    </root>
+  </artifact>
+</component>
