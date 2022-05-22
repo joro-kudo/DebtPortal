@@ -11,16 +11,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-/**
- * services for reading, adding, changing and deleting debts
- */
+
 @Path("debt")
 public class DebtService {
 
-    /**
-     * reads a list of all debts
-     * @return  debts as JSON
-     */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -32,11 +26,7 @@ public class DebtService {
                 .build();
     }
 
-    /**
-     * reads a debt identified by the uuid
-     * @param debtUUID
-     * @return debt
-     */
+
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)

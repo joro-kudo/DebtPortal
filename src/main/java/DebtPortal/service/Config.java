@@ -9,9 +9,7 @@ import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
-/**
- * configure the web services and properties
- */
+
 
 @ApplicationPath("/resource")
 

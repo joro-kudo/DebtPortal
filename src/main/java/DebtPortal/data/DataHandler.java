@@ -219,9 +219,7 @@ public class DataHandler {
         }
     }
 
-    /**
-     * reads the debts from the JSON-file
-     */
+
     private void readDebtJSON() {
         try {
             String path = Config.getProperty("debtJSON");
@@ -238,9 +236,7 @@ public class DataHandler {
         }
     }
 
-    /**
-     * writes the debtList to the JSON-file
-     */
+
     private void writeDebtJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
@@ -258,9 +254,7 @@ public class DataHandler {
     }
 
 
-    /**
-     * reads the credits from the JSON-file
-     */
+
     private void readCreditJSON() {
         try {
             String path = Config.getProperty("creditJSON");
@@ -277,9 +271,7 @@ public class DataHandler {
         }
     }
 
-    /**
-     * writes the creditList to the JSON-file
-     */
+
     private void writeCreditJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
@@ -297,9 +289,7 @@ public class DataHandler {
     }
 
 
-    /**
-     * reads the people from the JSON-file
-     */
+
     private void readPersonJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
@@ -317,9 +307,7 @@ public class DataHandler {
         }
     }
 
-    /**
-     * writes the personList to the JSON-file
-     */
+
     private void writePersonJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
