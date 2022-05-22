@@ -28,8 +28,9 @@ public class Config extends Application {
     public Set<Class<?>> getClasses() {
         HashSet providers = new HashSet<Class<?>>();
         providers.add(DebtService.class);
+        providers.add(CreditService.class);
         providers.add(PersonService.class);
-        providers.add(TestService.class);
+
         return providers;
     }
 

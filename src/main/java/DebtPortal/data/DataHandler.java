@@ -1,5 +1,6 @@
 package DebtPortal.data;
 
+import DebtPortal.model.Credit;
 import DebtPortal.model.Debt;
 import DebtPortal.model.Person;
 import DebtPortal.service.Config;
@@ -20,6 +21,7 @@ import java.util.List;
 public class DataHandler {
     private static DataHandler instance = null;
     private List<Debt> debtList;
+    private List<Credit> creditList;
     private List<Person> personList;
 
     /**
@@ -30,6 +32,8 @@ public class DataHandler {
         readPersonJSON();
         setDebtList(new ArrayList<>());
         readDebtJSON();
+        setCreditList(new ArrayList<>());
+        readCreditJSON();
     }
 
 
@@ -96,6 +100,63 @@ public class DataHandler {
         if (debt != null) {
             getDebtList().remove(debt);
             writeDebtJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    /**
+     * reads all credits
+     * @return list of credits
+     */
+    public List<Credit> readAllCredits() {
+        return getCreditList();
+    }
+
+    /**
+     * reads a credit by its uuid
+     * @param creditUUID
+     * @return the Credit (null=not found)
+     */
+    public Credit readCreditByUUID(String creditUUID) {
+        Credit credit = null;
+        for (Credit entry : getCreditList()) {
+            if (entry.getCreditUUID().equals(creditUUID)) {
+                credit = entry;
+            }
+        }
+        return credit;
+    }
+
+    /**
+     * inserts a new credit into the creditList
+     *
+     * @param credit the credit to be saved
+     */
+    public void insertCredit(Credit credit) {
+        getCreditList().add(credit);
+        writeCreditJSON();
+    }
+
+    /**
+     * updates the creditList
+     */
+    public void updateCredit() {
+        writeCreditJSON();
+    }
+
+    /**
+     * deletes a credit identified by the creditUUID
+     * @param creditUUID  the key
+     * @return  success=true/false
+     */
+    public boolean deleteCredit(String creditUUID) {
+        Credit credit = readCreditByUUID(creditUUID);
+        if (credit != null) {
+            getCreditList().remove(credit);
+            writeCreditJSON();
             return true;
         } else {
             return false;
@@ -196,6 +257,46 @@ public class DataHandler {
         }
     }
 
+
+    /**
+     * reads the credits from the JSON-file
+     */
+    private void readCreditJSON() {
+        try {
+            String path = Config.getProperty("creditJSON");
+            byte[] jsonData = Files.readAllBytes(
+                    Paths.get(path)
+            );
+            ObjectMapper objectMapper = new ObjectMapper();
+            Credit[] credits = objectMapper.readValue(jsonData, Credit[].class);
+            for (Credit credit : credits) {
+                getCreditList().add(credit);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * writes the creditList to the JSON-file
+     */
+    private void writeCreditJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String creditPath = Config.getProperty("creditJSON");
+        try {
+            fileOutputStream = new FileOutputStream(creditPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getCreditList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
     /**
      * reads the people from the JSON-file
      */
@@ -253,6 +354,27 @@ public class DataHandler {
 
     private void setDebtList(List<Debt> debtList) {
         this.debtList = debtList;
+    }
+
+
+    /**
+     * gets creditList
+     *
+     * @return value of creditList
+     */
+
+    private List<Credit> getCreditList() {
+        return creditList;
+    }
+
+    /**
+     * sets creditList
+     *
+     * @param creditList the value to set
+     */
+
+    private void setCreditList(List<Credit> creditList) {
+        this.creditList = creditList;
     }
 
     /**
