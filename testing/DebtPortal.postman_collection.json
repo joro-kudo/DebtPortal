@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "3ccfd212-86ff-46e3-a655-27d610dfcb78",
+		"name": "DebtPortal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1.1 PersonServiceList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 PersonService Read valid UUID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 PersonService Read invalid UUID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1 DebtServiceList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2 DebtService Read valid UUID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/DebtPortal-1/resource/debt/read?uuid=9b474852-b990-48d8-bbc3-57ae61b61e6d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"DebtPortal-1",
+						"resource",
+						"debt",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "9b474852-b990-48d8-bbc3-57ae61b61e6d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2 DebtService Read invalid UUID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/DebtPortal-1/resource/debt/read?uuid=9b474852-b990-48d8-bbc3-57ae61b61e6d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"DebtPortal-1",
+						"resource",
+						"debt",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "9b474852-b990-48d8-bbc3-57ae61b61e6d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 CreditServiceList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 CreditService Read valid UUID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 CreditService Read invalid UUID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

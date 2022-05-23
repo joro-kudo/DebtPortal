@@ -1,33 +1,34 @@
 [
     {
-        "creditUUID": "9b474852-b990-48d8-bbc3-57ae61b61e6d",
-        "message": "You still owe Adelaisa 3 lunches for 10$ each",
+        "creditUUID": "796bc3c3-5745-46b2-ae2f-398c0b280069",
+        "message": "Hingus owes you 3$",
         "personUUID": "5e20be66-3ce9-45f0-92c8-06f0f4182273",
-        "price": 30.0
-        
+        "price": 3.0
+
     },
     {
-        "creditUUID": "2a16f85a-fd50-414f-9440-9a538d890770",
-        "message": "5$ for that Beer",
-        "personUUID": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
-        "price": 5.0
-    },
-    {
-        "creditUUID": "6d0d8204-a234-4c0d-be04-da0f0c51b52f",
-        "message": "Lost Bet money",
+        "creditUUID": "ed4032bd-5ea9-4e94-8835-375b41b8117f",
+        "message": "won Bet money",
         "personUUID": "fb349088-3680-41be-b9e0-82fc900f5527",
         "price": 15.0
     },
     {
-        "creditUUID": "f75e9eb2-1316-4cd4-84c9-3545f11b4886",
-        "message": "John paid my lunch",
+        "creditUUID": "a9358f7b-57d8-4200-a6f1-84a8d7fd6e83",
+        "message": "John owes me 5",
+        "personUUID": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
+        "price": 5.0
+    },
+
+    {
+        "creditUUID": "92464c27-1981-4ace-8d66-1542abfbe245",
+        "message": "i paid quantavious  lunch",
         "personUUID": "71de8847-2ac8-446f-b6f0-d8dabf458fe1",
-        "price": 13.4
+        "price": 14.4
     },
     {
-        "creditUUID": "8e1fbf5e-54ca-47b2-bd29-31db15914723",
-        "message": "You still owe Hingus 20$",
+        "creditUUID": "a4da1144-eafa-4473-9ef3-a8121aa87540",
+        "message": "10$ owed by hingus",
         "personUUID": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
-        "price": 20.0
+        "price": 10.0
     }
 ]
