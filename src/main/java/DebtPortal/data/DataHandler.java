@@ -220,6 +220,7 @@ public class DataHandler {
     }
 
 
+
     private void readDebtJSON() {
         try {
             String path = Config.getProperty("debtJSON");

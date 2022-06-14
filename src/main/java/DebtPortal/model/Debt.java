@@ -19,6 +19,7 @@ public class Debt {
 
     /**
      * gets the personUUID from the Person-object
+     *
      * @return
      */
     public String getPersonUUID() {
@@ -27,6 +28,7 @@ public class Debt {
 
     /**
      * creates a Person-object without the debtlist
+     *
      * @param personUUID
      */
     public void setPersonUUID(String personUUID) {
@@ -76,26 +78,6 @@ public class Debt {
     }
 
     /**
-     * gets message
-     *
-     * @return value of message
-     */
-
-    public String getMessage() {
-        return message;
-    }
-
-    /**
-     * sets message
-     *
-     * @param message the value to set
-     */
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    /**
      * gets price
      *
      * @return value of price
@@ -113,6 +95,26 @@ public class Debt {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    /**
+     * gets message
+     *
+     * @return value of message
+     */
+
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * sets message
+     *
+     * @param message the value to set
+     */
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
 
