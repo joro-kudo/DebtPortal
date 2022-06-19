@@ -82,7 +82,7 @@ function deleteDebt(event) {
         })
         .then(function (response) {
             if (response.ok) {
-                window.location.href = "./debtshelf.html";
+                window.location.href = "./debtportal.html";
             } else {
                 console.log(response);
             }

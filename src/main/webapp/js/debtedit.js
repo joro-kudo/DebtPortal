@@ -30,7 +30,8 @@ function saveDebt(event) {
     let method;
     let url = "./resource/debt/";
     let debtUUID = getQueryParam("uuid");
-    if (debtUUID == null) {
+
+    if (debtUUID != "1") {
         debtUUID=uuidv4()
         this.debtUUID=uuidv4
         method = "POST";
@@ -133,5 +134,5 @@ function showPeople(data) {
  * @param event  the click-event
  */
 function cancelEdit(event) {
-    window.location.href = "../debtportal.html";
+    window.location.href = "debtportal.html";
 }
