@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -18,43 +19,30 @@ import java.util.List;
 /**
  * reads and writes the data in the JSON-files
  */
-public class DataHandler {
-    private static DataHandler instance = null;
-    private List<Debt> debtList;
-    private List<Credit> creditList;
-    private List<Person> personList;
+
+public final class DataHandler {
+    
+    private  static List<Debt> debtList;
+    private static List<Credit> creditList;
+    private static List<Person> personList;
 
     /**
      * private constructor defeats instantiation
      */
     private DataHandler() {
-        setPersonList(new ArrayList<>());
-        readPersonJSON();
-        setDebtList(new ArrayList<>());
-        readDebtJSON();
-        setCreditList(new ArrayList<>());
-        readCreditJSON();
+
     }
-
-
-
-
-    /**
-     * gets the only instance of this class
-     * @return
-     */
-    public static DataHandler getInstance() {
-        if (instance == null)
-            instance = new DataHandler();
-        return instance;
+    public  static void initLists() {
+        DataHandler.setPersonList(null);
+        DataHandler.setDebtList(null);
+        DataHandler.setCreditList(null);
     }
-
 
     /**
      * reads all debts
      * @return list of debts
      */
-    public List<Debt> readAllDebts() {
+    public  static List<Debt> readAllDebts() {
         return getDebtList();
     }
 
@@ -63,7 +51,7 @@ public class DataHandler {
      * @param debtUUID
      * @return the Debt (null=not found)
      */
-    public Debt readDebtByUUID(String debtUUID) {
+    public static Debt readDebtByUUID(String debtUUID) {
         Debt debt = null;
         for (Debt entry : getDebtList()) {
             if (entry.getDebtUUID().equals(debtUUID)) {
@@ -78,7 +66,7 @@ public class DataHandler {
      *
      * @param debt the debt to be saved
      */
-    public void insertDebt(Debt debt) {
+    public static void insertDebt(Debt debt) {
         getDebtList().add(debt);
         writeDebtJSON();
     }
@@ -86,7 +74,7 @@ public class DataHandler {
     /**
      * updates the debtList
      */
-    public void updateDebt() {
+    public static void updateDebt() {
         writeDebtJSON();
     }
 
@@ -95,7 +83,7 @@ public class DataHandler {
      * @param debtUUID  the key
      * @return  success=true/false
      */
-    public boolean deleteDebt(String debtUUID) {
+    public static boolean deleteDebt(String debtUUID) {
         Debt debt = readDebtByUUID(debtUUID);
         if (debt != null) {
             getDebtList().remove(debt);
@@ -111,7 +99,7 @@ public class DataHandler {
      * reads all credits
      * @return list of credits
      */
-    public List<Credit> readAllCredits() {
+    public static List<Credit> readAllCredits() {
         return getCreditList();
     }
 
@@ -120,7 +108,7 @@ public class DataHandler {
      * @param creditUUID
      * @return the Credit (null=not found)
      */
-    public Credit readCreditByUUID(String creditUUID) {
+    public static Credit readCreditByUUID(String creditUUID) {
         Credit credit = null;
         for (Credit entry : getCreditList()) {
             if (entry.getCreditUUID().equals(creditUUID)) {
@@ -135,7 +123,7 @@ public class DataHandler {
      *
      * @param credit the credit to be saved
      */
-    public void insertCredit(Credit credit) {
+    public static void insertCredit(Credit credit) {
         getCreditList().add(credit);
         writeCreditJSON();
     }
@@ -143,7 +131,7 @@ public class DataHandler {
     /**
      * updates the creditList
      */
-    public void updateCredit() {
+    public static void updateCredit() {
         writeCreditJSON();
     }
 
@@ -152,7 +140,7 @@ public class DataHandler {
      * @param creditUUID  the key
      * @return  success=true/false
      */
-    public boolean deleteCredit(String creditUUID) {
+    public static boolean deleteCredit(String creditUUID) {
         Credit credit = readCreditByUUID(creditUUID);
         if (credit != null) {
             getCreditList().remove(credit);
@@ -167,7 +155,7 @@ public class DataHandler {
      * reads all people
      * @return list of debts
      */
-    public List<Person> readAllPeople() {
+    public static List<Person> readAllPeople() {
         return personList;
     }
 
@@ -176,7 +164,7 @@ public class DataHandler {
      * @param personUUID
      * @return the Person (null=not found)
      */
-    public Person readPersonByUUID(String personUUID) {
+    public static Person readPersonByUUID(String personUUID) {
         Person person = null;
         for (Person entry : getPersonList()) {
             if (entry.getPersonUUID().equals(personUUID)) {
@@ -191,7 +179,7 @@ public class DataHandler {
      *
      * @param person the person to be saved
      */
-    public void insertPerson(Person person) {
+    public static void insertPerson(Person person) {
         getPersonList().add(person);
         writePersonJSON();
     }
@@ -199,7 +187,7 @@ public class DataHandler {
     /**
      * updates the personList
      */
-    public void updatePerson() {
+    public static void updatePerson() {
         writePersonJSON();
     }
 
@@ -208,7 +196,7 @@ public class DataHandler {
      * @param personUUID  the key
      * @return  success=true/false
      */
-    public boolean deletePerson(String personUUID) {
+    public static boolean deletePerson(String personUUID) {
         Person person = readPersonByUUID(personUUID);
         if (person != null) {
             getPersonList().remove(person);
@@ -221,7 +209,7 @@ public class DataHandler {
 
 
 
-    private void readDebtJSON() {
+    private static void readDebtJSON() {
         try {
             String path = Config.getProperty("debtJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -238,7 +226,7 @@ public class DataHandler {
     }
 
 
-    private void writeDebtJSON() {
+    private static void writeDebtJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
         FileOutputStream fileOutputStream = null;
@@ -256,7 +244,7 @@ public class DataHandler {
 
 
 
-    private void readCreditJSON() {
+    private static void readCreditJSON() {
         try {
             String path = Config.getProperty("creditJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -273,7 +261,7 @@ public class DataHandler {
     }
 
 
-    private void writeCreditJSON() {
+    private static void writeCreditJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
         FileOutputStream fileOutputStream = null;
@@ -291,7 +279,7 @@ public class DataHandler {
 
 
 
-    private void readPersonJSON() {
+    private static void readPersonJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -309,7 +297,7 @@ public class DataHandler {
     }
 
 
-    private void writePersonJSON() {
+    private static void writePersonJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
         FileOutputStream fileOutputStream = null;
@@ -331,7 +319,12 @@ public class DataHandler {
      * @return value of debtList
      */
 
-    private List<Debt> getDebtList() {
+    private static List<Debt> getDebtList() {
+
+        if (debtList == null) {
+            setDebtList(new ArrayList<>());
+            readDebtJSON();
+        }
         return debtList;
     }
 
@@ -341,10 +334,9 @@ public class DataHandler {
      * @param debtList the value to set
      */
 
-    private void setDebtList(List<Debt> debtList) {
-        this.debtList = debtList;
+    private static void setDebtList(List<Debt> debtList) {
+        DataHandler.debtList = debtList;
     }
-
 
     /**
      * gets creditList
@@ -352,7 +344,12 @@ public class DataHandler {
      * @return value of creditList
      */
 
-    private List<Credit> getCreditList() {
+    private static List<Credit> getCreditList() {
+
+        if (creditList == null) {
+            setCreditList(new ArrayList<>());
+            readCreditJSON();
+        }
         return creditList;
     }
 
@@ -362,8 +359,8 @@ public class DataHandler {
      * @param creditList the value to set
      */
 
-    private void setCreditList(List<Credit> creditList) {
-        this.creditList = creditList;
+    private static void setCreditList(List<Credit> creditList) {
+        DataHandler.creditList = creditList;
     }
 
     /**
@@ -372,7 +369,12 @@ public class DataHandler {
      * @return value of personList
      */
 
-    private List<Person> getPersonList() {
+    private static List<Person> getPersonList() {
+        if (personList == null) {
+            setPersonList(new ArrayList<>());
+            readPersonJSON();
+        }
+
         return personList;
     }
 
@@ -382,9 +384,8 @@ public class DataHandler {
      * @param personList the value to set
      */
 
-    private void setPersonList(List<Person> personList) {
-        this.personList = personList;
+    private static void setPersonList(List<Person> personList) {
+        DataHandler.personList = personList;
     }
-
 
 }

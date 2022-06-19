@@ -2,12 +2,16 @@ package DebtPortal.model;
 
 import DebtPortal.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
 /**
  * a debt in the debtshelf
  */
+@Data
 public class Debt {
     @JsonIgnore
     private Person person;
@@ -23,6 +27,8 @@ public class Debt {
      * @return
      */
     public String getPersonUUID() {
+        if (getPerson()== null) return null;
+
         return getPerson().getPersonUUID();
     }
 
@@ -33,89 +39,12 @@ public class Debt {
      */
     public void setPersonUUID(String personUUID) {
         setPerson(new Person());
-        Person person = DataHandler.getInstance().readPersonByUUID(personUUID);
+        Person person = DataHandler.readPersonByUUID(personUUID);
         getPerson().setPersonUUID(personUUID);
-        getPerson().setPerson(person.getPerson());
+        getPerson().setPersonName(person.getPersonName());
 
     }
 
-    /**
-     * gets person
-     *
-     * @return value of person
-     */
-    public Person getPerson() {
-        return person;
-    }
-
-    /**
-     * sets person
-     *
-     * @param person the value to set
-     */
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    /**
-     * gets debtUUID
-     *
-     * @return value of debtUUID
-     */
-
-    public String getDebtUUID() {
-        return debtUUID;
-    }
-
-    /**
-     * sets debtUUID
-     *
-     * @param debtUUID the value to set
-     */
-
-    public void setDebtUUID(String debtUUID) {
-        this.debtUUID = debtUUID;
-    }
-
-    /**
-     * gets price
-     *
-     * @return value of price
-     */
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    /**
-     * sets price
-     *
-     * @param price the value to set
-     */
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    /**
-     * gets message
-     *
-     * @return value of message
-     */
-
-    public String getMessage() {
-        return message;
-    }
-
-    /**
-     * sets message
-     *
-     * @param message the value to set
-     */
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
 
 }
