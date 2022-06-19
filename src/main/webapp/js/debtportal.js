@@ -35,9 +35,10 @@ function showDebtlist(data) {
     let tBody = document.getElementById("debtlist");
     data.forEach(debt => {
         let row = tBody.insertRow(-1);
-        row.insertCell(-1).innerHTML = debt.message;
-        row.insertCell(-1).innerHTML = debt.person.personName;
+        row.insertCell(-1).innerHTML = debt.description;
         row.insertCell(-1).innerHTML = debt.price;
+        row.insertCell(-1).innerHTML = debt.person.personName;
+
 
         let button = document.createElement("button");
         button.innerHTML = "Bearbeiten ...";

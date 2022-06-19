@@ -12,16 +12,16 @@
 </head>
 <body>
 <nav id="nav">
-  <span style="color: red;"></span>
+  <span id="message" style="color: red;"></span>
 </nav>
 <h3>Buch bearbeiten</h3>
-<form id="bookeditForm" name="bookedit">
+<form id="debteditForm" name="sebtedit">
   <table>
     <tr>
-      <td><label for="message">Buchtitel</label></td>
+      <td><label for="description">Buchtitel</label></td>
       <td>
-        <input id="message" name="message" type="text" size="30" minlength="2" maxlength="30" required/>
-        <input id="debtUUID" name="debtUUID" type="hidden"/>
+        <input id="description" name="description" type="text" size="30" minlength="2" maxlength="30" required/>
+        <label for="debtUUID"></label><input id="debtUUID" name="debtUUID" />
       </td>
     </tr>
 
@@ -44,7 +44,7 @@
         <button id="save" type="submit">Speichern</button>
       </td>
       <td>
-        <button id="reset" type="reset">Zurücksetzen</button>
+        <button id="reset" type="button">Zurücksetzen</button>
       </td>
       <td>
         <button id="cancel" type="button">Abbruch</button>

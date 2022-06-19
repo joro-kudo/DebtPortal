@@ -9,7 +9,6 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-import javax.xml.crypto.Data;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -37,9 +36,10 @@ public final class DataHandler {
      * initialize the lists with the data
      */
     public static void initLists() {
+        DataHandler.setCreditList(null);
+
         DataHandler.setPersonList(null);
         DataHandler.setDebtList(null);
-        DataHandler.setCreditList(null);
 
     }
 

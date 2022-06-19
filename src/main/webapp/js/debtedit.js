@@ -5,9 +5,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     readPeople();
     readDebt();
-
+    document.getElementById("debtUUID").value = uuidv4()
     document.getElementById("debteditForm").addEventListener("submit", saveDebt);
     document.getElementById("cancel").addEventListener("click", cancelEdit);
+    document.getElementById("reset").addEventListener("click", resetEdit);
+
 });
 /**
  generates a uuid
@@ -31,9 +33,9 @@ function saveDebt(event) {
     let url = "./resource/debt/";
     let debtUUID = getQueryParam("uuid");
 
-    if (debtUUID != "1") {
-        debtUUID=uuidv4()
-        this.debtUUID=uuidv4
+    if (debtUUID ==null){
+
+
         method = "POST";
         url += "create";
     } else {
@@ -64,21 +66,27 @@ function saveDebt(event) {
  * reads a debt
  */
 function readDebt() {
-    const debtUUID = getQueryParam("uuid");
+    let debtUUID = getQueryParam("uuid");
+
     fetch("./resource/debt/read?uuid=" + debtUUID)
         .then(function (response) {
+            console.log("1");
+
             if (response.ok) {
                 return response;
             } else {
                 console.log(response);
             }
         })
-        .then(response => response.json())
-        .then(data => {
+        .then(response => {response.json();
+})
+.then(data => {
             showDebt(data);
+
+
         })
         .catch(function (error) {
-            console.log(error);
+
         });
 }
 
@@ -87,10 +95,11 @@ function readDebt() {
  * @param data  the debt-data
  */
 function showDebt(data) {
-    document.getElementById("debtUUID").value = uuidv4();
-    document.getElementById("message").value = data.message;
-    document.getElementById("person").value = data.personUUID;
+    document.getElementById("debtUUID").value = data.debtUUID;
+    document.getElementById("description").value = data.description;
     document.getElementById("price").value = data.price;
+    document.getElementById("person").value = data.personUUID;
+
 }
 
 /**
@@ -134,5 +143,16 @@ function showPeople(data) {
  * @param event  the click-event
  */
 function cancelEdit(event) {
-    window.location.href = "debtportal.html";
+    window.location.href = "./debtportal.html";
+}
+/**
+ * generates new uuid
+ * * @param event  the click-event
+ */
+function resetEdit(event) {
+    var fieldsToReset = document.querySelectorAll("input:not([data-noreset='true'])")
+    for(var i=0;i<fieldsToReset.length;i++){
+        fieldsToReset[i].value = null;
+    }
+    document.getElementById("debtUUID").value = uuidv4();
 }

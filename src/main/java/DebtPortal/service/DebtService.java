@@ -97,7 +97,7 @@ public class DebtService {
         int httpStatus = 200;
         Debt oldDebt = DataHandler.readDebtByUUID(debt.getDebtUUID());
         if (oldDebt != null) {
-            oldDebt.setMessage(debt.getMessage());
+            oldDebt.setDescription(debt.getDescription());
             oldDebt.setPersonUUID(personUUID);
             oldDebt.setPrice(debt.getPrice());
 

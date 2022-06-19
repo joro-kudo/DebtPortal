@@ -25,10 +25,10 @@ public class Credit {
     @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String creditUUID;
 
-    @FormParam("message")
+    @FormParam("description")
     @NotEmpty
-    @Size(min=1, max=450)
-    private String message;
+    @Size(min=5, max=450)
+    private String description;
 
 
     @FormParam("price")

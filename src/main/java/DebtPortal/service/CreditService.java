@@ -97,10 +97,9 @@ public class CreditService {
         int httpStatus = 200;
         Credit oldCredit = DataHandler.readCreditByUUID(credit.getCreditUUID());
         if (oldCredit != null) {
-            oldCredit.setMessage(credit.getMessage());
+            oldCredit.setDescription(credit.getDescription());
             oldCredit.setPersonUUID(personUUID);
             oldCredit.setPrice(credit.getPrice());
-          
 
             DataHandler.updateCredit();
         } else {

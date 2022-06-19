@@ -47,7 +47,7 @@ public class TestService {
             String filename = path.getFileName().toString();
             String folder = path.getParent().toString();
 
-            byte[] debtJSON = Files.readAllBytes(Paths.get(folder, "backup", filename));
+            byte[] debtJSON = Files.readAllBytes(Paths.get(folder, "Backup", filename));
             FileOutputStream fileOutputStream = new FileOutputStream(Config.getProperty("debtJSON"));
             fileOutputStream.write(debtJSON);
 
