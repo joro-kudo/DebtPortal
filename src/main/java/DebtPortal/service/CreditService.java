@@ -11,7 +11,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-
+/**
+ * services for reading, adding, changing and deleting credits
+ */
 @Path("credit")
 public class CreditService {
 
@@ -29,7 +31,6 @@ public class CreditService {
                 .entity(creditList)
                 .build();
     }
-
 
     /**
      * reads a credit identified by the uuid
@@ -54,6 +55,7 @@ public class CreditService {
                 .entity(credit)
                 .build();
     }
+
     /**
      * inserts a new credit
      * @param personUUID the uuid of the person
@@ -98,6 +100,7 @@ public class CreditService {
             oldCredit.setMessage(credit.getMessage());
             oldCredit.setPersonUUID(personUUID);
             oldCredit.setPrice(credit.getPrice());
+          
 
             DataHandler.updateCredit();
         } else {

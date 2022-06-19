@@ -3,12 +3,13 @@ package DebtPortal.data;
 import DebtPortal.model.Credit;
 import DebtPortal.model.Debt;
 import DebtPortal.model.Person;
+import DebtPortal.model.User;
 import DebtPortal.service.Config;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -19,30 +20,34 @@ import java.util.List;
 /**
  * reads and writes the data in the JSON-files
  */
-
 public final class DataHandler {
-    
-    private  static List<Debt> debtList;
+    private static List<Debt> debtList;
     private static List<Credit> creditList;
+
     private static List<Person> personList;
+    private static List<User> userList;
 
     /**
      * private constructor defeats instantiation
      */
     private DataHandler() {
-
     }
-    public  static void initLists() {
+
+    /**
+     * initialize the lists with the data
+     */
+    public static void initLists() {
         DataHandler.setPersonList(null);
         DataHandler.setDebtList(null);
         DataHandler.setCreditList(null);
+
     }
 
     /**
      * reads all debts
      * @return list of debts
      */
-    public  static List<Debt> readAllDebts() {
+    public static List<Debt> readAllDebts() {
         return getDebtList();
     }
 
@@ -93,9 +98,7 @@ public final class DataHandler {
             return false;
         }
     }
-
-
-    /**
+/**
      * reads all credits
      * @return list of credits
      */
@@ -156,7 +159,7 @@ public final class DataHandler {
      * @return list of debts
      */
     public static List<Person> readAllPeople() {
-        return personList;
+        return getPersonList();
     }
 
     /**
@@ -207,8 +210,19 @@ public final class DataHandler {
         }
     }
 
+    public String readUserRole(String username, String password) {
+        for (User user : getUserList()) {
+            if (user.getUsername().equals(username) &&
+                    user.getPassword().equals(password)) {
+                return user.getUsername();
+            }
+        }
+        return "guest";
+    }
 
-
+    /**
+     * reads the debts from the JSON-file
+     */
     private static void readDebtJSON() {
         try {
             String path = Config.getProperty("debtJSON");
@@ -225,7 +239,9 @@ public final class DataHandler {
         }
     }
 
-
+    /**
+     * writes the debtList to the JSON-file
+     */
     private static void writeDebtJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
@@ -242,8 +258,9 @@ public final class DataHandler {
         }
     }
 
-
-
+    /**
+     * reads the credits from the JSON-file
+     */
     private static void readCreditJSON() {
         try {
             String path = Config.getProperty("creditJSON");
@@ -260,7 +277,9 @@ public final class DataHandler {
         }
     }
 
-
+    /**
+     * writes the creditList to the JSON-file
+     */
     private static void writeCreditJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
@@ -277,8 +296,9 @@ public final class DataHandler {
         }
     }
 
-
-
+    /**
+     * reads the people from the JSON-file
+     */
     private static void readPersonJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
@@ -296,7 +316,9 @@ public final class DataHandler {
         }
     }
 
-
+    /**
+     * writes the personList to the JSON-file
+     */
     private static void writePersonJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
@@ -307,7 +329,27 @@ public final class DataHandler {
         try {
             fileOutputStream = new FileOutputStream(debtPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
-            objectWriter.writeValue(fileWriter, getDebtList());
+            objectWriter.writeValue(fileWriter, getPersonList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * reads the users from the JSON-file
+     */
+    private static void readUserJSON() {
+        try {
+            byte[] jsonData = Files.readAllBytes(
+                    Paths.get(
+                            Config.getProperty("userJSON")
+                    )
+            );
+            ObjectMapper objectMapper = new ObjectMapper();
+            User[] users = objectMapper.readValue(jsonData, User[].class);
+            for (User user : users) {
+                getUserList().add(user);
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -337,6 +379,7 @@ public final class DataHandler {
     private static void setDebtList(List<Debt> debtList) {
         DataHandler.debtList = debtList;
     }
+
 
     /**
      * gets creditList
@@ -388,4 +431,27 @@ public final class DataHandler {
         DataHandler.personList = personList;
     }
 
+    /**
+     * gets userList
+     *
+     * @return value of userList
+     */
+
+    public static List<User> getUserList() {
+        if (DataHandler.userList == null) {
+            DataHandler.setUserList(new ArrayList<>());
+            readUserJSON();
+        }
+        return userList;
+    }
+
+    /**
+     * sets userList
+     *
+     * @param userList the value to set
+     */
+
+    public static void setUserList(List<User> userList) {
+        DataHandler.userList = userList;
+    }
 }

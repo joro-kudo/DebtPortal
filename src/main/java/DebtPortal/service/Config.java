@@ -9,7 +9,9 @@ import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
-
+/**
+ * configure the web services and properties
+ */
 
 @ApplicationPath("/resource")
 
@@ -28,8 +30,9 @@ public class Config extends Application {
         providers.add(DebtService.class);
         providers.add(CreditService.class);
         providers.add(PersonService.class);
-        providers.add(TestService.class);
+        providers.add(UserService.class);
 
+        providers.add(TestService.class);
         return providers;
     }
 

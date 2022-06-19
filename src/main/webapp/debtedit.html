@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Marcel Suter"/>
+  <meta name="copyright" content="FG ICT - Bildungszentrum Zürichsee"/>
+  <meta name="project" content="Bookshelf"/>
+  <meta name="description" content="book form edit"/>
+  <title>Buch bearbeiten</title>
+  <script src="./js/debtedit.js"></script>
+  <script src="./js/util.js"></script>
+</head>
+<body>
+<nav id="nav">
+  <span style="color: red;"></span>
+</nav>
+<h3>Buch bearbeiten</h3>
+<form id="bookeditForm" name="bookedit">
+  <table>
+    <tr>
+      <td><label for="message">Buchtitel</label></td>
+      <td>
+        <input id="message" name="message" type="text" size="30" minlength="2" maxlength="30" required/>
+        <input id="debtUUID" name="debtUUID" type="hidden"/>
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="person">Verlag</label></td>
+      <td>
+        <select id="person" name="personUUID" required>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="price">Preis</label></td>
+      <td><input id="price" name="price" type="number" min="0.05" max="199.95" step="0.05"/></td>
+    </tr>
+
+  </table>
+  <table>
+    <tr>
+      <td>
+        <button id="save" type="submit">Speichern</button>
+      </td>
+      <td>
+        <button id="reset" type="reset">Zurücksetzen</button>
+      </td>
+      <td>
+        <button id="cancel" type="button">Abbruch</button>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

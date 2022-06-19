@@ -1,6 +1,5 @@
 package DebtPortal.service;
 
-
 import DebtPortal.data.DataHandler;
 import DebtPortal.service.Config;
 
@@ -44,21 +43,23 @@ public class TestService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response restore() {
         try {
-            java.nio.file.Path path = Paths.get(Config.getProperty("creditJSON"));
+            java.nio.file.Path path = Paths.get(Config.getProperty("debtJSON"));
             String filename = path.getFileName().toString();
             String folder = path.getParent().toString();
 
-            byte[] creditJSON = Files.readAllBytes(Paths.get(folder, "backup", filename));
-            FileOutputStream fileOutputStream = new FileOutputStream(Config.getProperty("creditJSON"));
-            fileOutputStream.write(creditJSON);
-
-            path = Paths.get(Config.getProperty("debtJSON"));
-             filename = path.getFileName().toString();
-             folder = path.getParent().toString();
-
             byte[] debtJSON = Files.readAllBytes(Paths.get(folder, "backup", filename));
-             fileOutputStream = new FileOutputStream(Config.getProperty("debtJSON"));
+            FileOutputStream fileOutputStream = new FileOutputStream(Config.getProperty("debtJSON"));
             fileOutputStream.write(debtJSON);
+
+
+
+            path = Paths.get(Config.getProperty("creditJSON"));
+            filename = path.getFileName().toString();
+            folder = path.getParent().toString();
+
+            byte[] creditJSON = Files.readAllBytes(Paths.get(folder, "backup", filename));
+            fileOutputStream = new FileOutputStream(Config.getProperty("creditJSON"));
+            fileOutputStream.write(creditJSON);
 
             path = Paths.get(Config.getProperty("personJSON"));
             filename = path.getFileName().toString();

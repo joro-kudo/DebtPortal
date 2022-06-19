@@ -11,7 +11,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-
+/**
+ * services for reading, adding, changing and deleting debts
+ */
 @Path("debt")
 public class DebtService {
 
@@ -29,7 +31,6 @@ public class DebtService {
                 .entity(debtList)
                 .build();
     }
-
 
     /**
      * reads a debt identified by the uuid
@@ -54,6 +55,7 @@ public class DebtService {
                 .entity(debt)
                 .build();
     }
+
     /**
      * inserts a new debt
      * @param personUUID the uuid of the person
@@ -119,6 +121,7 @@ public class DebtService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteDebt(
             @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String debtUUID
     ) {
         int httpStatus = 200;

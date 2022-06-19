@@ -1,9 +1,9 @@
 package DebtPortal.service;
 
-
 import DebtPortal.data.DataHandler;
 import DebtPortal.model.Person;
 
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -11,19 +11,19 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * services for reading, adding, changing and deleting persons
+ * services for reading, adding, changing and deleting people
  */
 @Path("person")
 public class PersonService {
 
     /**
-     * reads a list of all persons
-     * @return  persons as JSON
+     * reads a list of all people
+     * @return  people as JSON
      */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listPersons() {
+    public Response listPeople() {
         List<Person> personList = DataHandler.readAllPeople();
         return Response
                 .status(200)
@@ -56,18 +56,16 @@ public class PersonService {
 
     /**
      * inserts a new person
-     * @param name the name of the person
+     * @param  person  a Person-object
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertPerson(
-            @FormParam("name") String name
+            @Valid @BeanParam Person person
     ) {
-        Person person = new Person();
         person.setPersonUUID(UUID.randomUUID().toString());
-        person.setPersonName(name);
 
         DataHandler.insertPerson(person);
         return Response
@@ -78,21 +76,19 @@ public class PersonService {
 
     /**
      * updates a person
-     * @param personUUID the key
-     * @param name the name of the person
+     * @param  person  a Person-object
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updatePerson(
-            @FormParam("uuid") String personUUID,
-            @FormParam("name") String name
+            @Valid @BeanParam Person person
     ) {
         int httpStatus = 200;
-        Person person = DataHandler.readPersonByUUID(personUUID);
-        if (person != null) {
-            person.setPersonName(name);
+        Person oldPerson = DataHandler.readPersonByUUID(person.getPersonUUID());
+        if (oldPerson != null) {
+            oldPerson.setPersonName(person.getPersonName());
 
             DataHandler.updatePerson();
         } else {
