@@ -116,6 +116,7 @@ public final class DataHandler {
         for (Credit entry : getCreditList()) {
             if (entry.getCreditUUID().equals(creditUUID)) {
                 credit = entry;
+                return credit;
             }
         }
         return credit;

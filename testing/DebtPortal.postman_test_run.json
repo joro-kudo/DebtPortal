@@ -1,21 +1,267 @@
 {
-	"id": "94da0927-1604-4e64-acb1-a8ec88856ddf",
+	"id": "63b29a19-de2c-40cd-8fc5-203eaec20f47",
 	"name": "DebtPortal",
-	"timestamp": "2022-06-19T19:02:10.297Z",
+	"timestamp": "2022-06-20T20:29:55.117Z",
 	"collection_id": "41bbb387-7459-4daf-8a45-4408322deac6",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 26,
-	"totalFail": 7,
+	"totalPass": 33,
+	"totalFail": 0,
 	"results": [
 		{
-			"id": "07c40d9e-cff6-4eca-84b3-c22fa573bf19",
+			"id": "68ca6d32-3b17-478e-b7c4-173f430df2e4",
 			"name": "LU03 Credit: read all",
 			"url": "http://localhost:8080/DebtPortal-1/resource/credit/list",
-			"time": 15,
+			"time": 64,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				64
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "8d709659-16a3-4e9c-9b67-7910084fbe12",
+			"name": "LU03 Credit: read one",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/read?uuid=2a16f85a-fd60-414f-9440-9a538d890772",
+			"time": 33,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Data test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Data test": true
+				}
+			]
+		},
+		{
+			"id": "c31d41d2-673d-4036-8108-7f1c336c74eb",
+			"name": "LU03 Credit: read not found",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/read?uuid=db117daa-e295-4597-abcd-a69496797dc9",
+			"time": 33,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "f7b62239-2ced-4941-976a-825077ff188a",
+			"name": "LU03: restore files",
+			"url": "http://localhost:8080/DebtPortal-1/resource/test/restore",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "36d2d426-b58d-4dc9-80ec-f43141aa6ea8",
+			"name": "LU03 Debt: read all",
+			"url": "http://localhost:8080/DebtPortal-1/resource/debt/list",
+			"time": 52,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				52
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "cf1321ab-235a-479e-ba27-df3917a36303",
+			"name": "LU03 Debt: read one",
+			"url": "http://localhost:8080/DebtPortal-1/resource/debt/read?uuid=2a16f85a-fd50-414f-9440-9a538d890771",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Data test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Data test": true
+				}
+			]
+		},
+		{
+			"id": "64609c1c-5751-45a3-a9cb-e03d449e08a4",
+			"name": "LU03 Debt: read not found",
+			"url": "http://localhost:8080/DebtPortal-1/resource/debt/read?uuid=db117daa-e295-4597-abcd-a69496797dc9",
+			"time": 5,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "ad85d8ff-bc4b-47fc-afd9-fd028dfbbc94",
+			"name": "LU03 Person: read all",
+			"url": "http://localhost:8080/DebtPortal-1/resource/person/list",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "c7ce1056-f175-45cc-bfa3-cfb9009acbb3",
+			"name": "LU03 Person: read one",
+			"url": "http://localhost:8080/DebtPortal-1/resource/person/read?uuid=472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "1025e6fd-e63e-4bc3-8bda-c95c1827ad36",
+			"name": "LU03 Person: read not found",
+			"url": "http://localhost:8080/DebtPortal-1/resource/person/read?uuid=06fc334d-7b02-434f-aaaa-6544d30d8832",
+			"time": 15,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
 			},
 			"tests": {
 				"Status test": true
@@ -36,70 +282,10 @@
 			]
 		},
 		{
-			"id": "19cde488-db8a-4f15-b3b0-5bc9cc910706",
-			"name": "LU03 Credit: read one",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/read?uuid=2a16f85a-fd60-414f-9440-9a538d890772",
-			"time": 10,
-			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error"
-			},
-			"tests": {
-				"Status test": false,
-				"Data test": false
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 0,
-					"fail": 1
-				},
-				"Data test": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				10
-			],
-			"allTests": [
-				{
-					"Status test": false,
-					"Data test": false
-				}
-			]
-		},
-		{
-			"id": "89eeb876-68eb-43fb-880f-92309ce22da8",
-			"name": "LU03 Credit: read not found",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/read?uuid=db117daa-e295-4597-abcd-a69496797dc9",
-			"time": 6,
-			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error"
-			},
-			"tests": {
-				"Status test": false
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Status test": false
-				}
-			]
-		},
-		{
-			"id": "f7b62239-2ced-4941-976a-825077ff188a",
-			"name": "LU03: restore files",
+			"id": "656a7d80-b387-4e11-a63f-5a68527b09f7",
+			"name": "LU04: restore files",
 			"url": "http://localhost:8080/DebtPortal-1/resource/test/restore",
-			"time": 5,
+			"time": 15,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -107,242 +293,92 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				5
+				15
 			],
 			"allTests": [
 				{}
 			]
 		},
 		{
-			"id": "36d2d426-b58d-4dc9-80ec-f43141aa6ea8",
-			"name": "LU03 Debt: read all",
-			"url": "http://localhost:8080/DebtPortal-1/resource/debt/list",
-			"time": 8,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				8
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "cf1321ab-235a-479e-ba27-df3917a36303",
-			"name": "LU03 Debt: read one",
-			"url": "http://localhost:8080/DebtPortal-1/resource/debt/read?uuid=2a16f85a-fd50-414f-9440-9a538d890771",
-			"time": 6,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Data test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Data test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Data test": true
-				}
-			]
-		},
-		{
-			"id": "64609c1c-5751-45a3-a9cb-e03d449e08a4",
-			"name": "LU03 Debt: read not found",
-			"url": "http://localhost:8080/DebtPortal-1/resource/debt/read?uuid=db117daa-e295-4597-abcd-a69496797dc9",
-			"time": 6,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "ad85d8ff-bc4b-47fc-afd9-fd028dfbbc94",
-			"name": "LU03 Person: read all",
-			"url": "http://localhost:8080/DebtPortal-1/resource/person/list",
-			"time": 8,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				8
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "c7ce1056-f175-45cc-bfa3-cfb9009acbb3",
-			"name": "LU03 Person: read one",
-			"url": "http://localhost:8080/DebtPortal-1/resource/person/read?uuid=472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
-			"time": 3,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				3
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "1025e6fd-e63e-4bc3-8bda-c95c1827ad36",
-			"name": "LU03 Person: read not found",
-			"url": "http://localhost:8080/DebtPortal-1/resource/person/read?uuid=06fc334d-7b02-434f-aaaa-6544d30d8832",
-			"time": 5,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				5
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "f580c23c-92ea-4415-8747-92c1f50e2557",
-			"name": "LU04 Credit-delete",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/delete?uuid=db117daa-e295-4597-abcd-a69496797dc0",
-			"time": 5,
-			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error"
-			},
-			"tests": {
-				"Status test": false
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				5
-			],
-			"allTests": [
-				{
-					"Status test": false
-				}
-			]
-		},
-		{
-			"id": "7e5bb11b-8565-4785-9f66-3c2c9c145289",
-			"name": "LU04 Credit-delete: uuid not found",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/delete?uuid=db117daa-e295-4597-0000-a69496797dc0",
-			"time": 7,
-			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error"
-			},
-			"tests": {
-				"Status test": false
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status test": false
-				}
-			]
-		},
-		{
-			"id": "dc76469c-049b-410a-b804-df6c68e2632b",
+			"id": "abc3ad0a-5702-45c7-8830-5163f18b027d",
 			"name": "LU04 Credit-insert",
 			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
+			"time": 264,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				264
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "876ded19-3164-4f81-91ac-652e3c62562b",
+			"name": "LU04 Credit-delete",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/delete?uuid=672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "934cb272-9562-4770-8967-15514ee96b23",
+			"name": "LU04 Credit-delete: uuid not found",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/delete?uuid=db117daa-e295-4597-0000-a69496797dc0",
+			"time": 5,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "8e0971f2-1c9d-4128-a14a-ea6cc2f2774d",
+			"name": "LU04 Credit-update",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/update",
 			"time": 10,
 			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error"
+				"code": 410,
+				"name": "Gone"
 			},
 			"tests": {},
 			"testPassFailCounts": {},
@@ -354,36 +390,18 @@
 			]
 		},
 		{
-			"id": "5e8af162-b7c8-4ae2-ae0a-273f673daafa",
-			"name": "LU04 Credit-update",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/update",
-			"time": 18,
-			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error"
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				18
-			],
-			"allTests": [
-				{}
-			]
-		},
-		{
-			"id": "752a7e4e-8edf-4726-a6e2-886ee6a1ba57",
+			"id": "75632e0b-4e49-41e7-acf5-8868dc19d393",
 			"name": "LU04 Credit-update: uuid not found",
 			"url": "http://localhost:8080/DebtPortal-1/resource/credit/update",
-			"time": 13,
+			"time": 7,
 			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error"
+				"code": 410,
+				"name": "Gone"
 			},
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				13
+				7
 			],
 			"allTests": [
 				{}
@@ -393,7 +411,7 @@
 			"id": "9547c413-d9aa-4b5a-ae46-4337d38780bc",
 			"name": "LU04: restore files",
 			"url": "http://localhost:8080/DebtPortal-1/resource/test/restore",
-			"time": 28,
+			"time": 5,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -401,7 +419,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				28
+				5
 			],
 			"allTests": [
 				{}
@@ -411,7 +429,7 @@
 			"id": "077974b2-d476-474e-a045-23c2649c2063",
 			"name": "LU04 Debt-insert",
 			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
-			"time": 12,
+			"time": 41,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -419,7 +437,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				12
+				41
 			],
 			"allTests": [
 				{}
@@ -429,7 +447,7 @@
 			"id": "4e52ca2f-1763-45cb-a9f7-06b37709093d",
 			"name": "LU04 Debt-delete",
 			"url": "http://localhost:8080/DebtPortal-1/resource/debt/delete?uuid=672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
-			"time": 7,
+			"time": 9,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -444,7 +462,7 @@
 				}
 			},
 			"times": [
-				7
+				9
 			],
 			"allTests": [
 				{
@@ -456,7 +474,7 @@
 			"id": "bb8c0c2b-81df-44e7-9a59-ff697f44d328",
 			"name": "LU04 Debt-delete: uuid not found",
 			"url": "http://localhost:8080/DebtPortal-1/resource/debt/delete?uuid=db117daa-e295-4597-0000-a69496797dc0",
-			"time": 3,
+			"time": 8,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
@@ -471,7 +489,7 @@
 				}
 			},
 			"times": [
-				3
+				8
 			],
 			"allTests": [
 				{
@@ -483,7 +501,7 @@
 			"id": "ecbaa2ad-5a65-43ad-b7b5-ae1411fdccfe",
 			"name": "LU04 Debt-update",
 			"url": "http://localhost:8080/DebtPortal-1/resource/debt/update",
-			"time": 5,
+			"time": 7,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
@@ -491,7 +509,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				5
+				7
 			],
 			"allTests": [
 				{}
@@ -519,7 +537,7 @@
 			"id": "d229384e-ef84-4fb1-8bdc-6456e4230037",
 			"name": "LU04 Person-delete",
 			"url": "http://localhost:8080/DebtPortal-1/resource/person/delete?uuid=606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
-			"time": 3,
+			"time": 7,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
@@ -527,7 +545,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				3
+				7
 			],
 			"allTests": [
 				{}
@@ -537,7 +555,7 @@
 			"id": "9194b9b8-94c6-41e3-b220-c8d7b3cfa12c",
 			"name": "LU04 Person-delete: uuid not found",
 			"url": "http://localhost:8080/DebtPortal-1/resource/person/delete?uuid=606cc4a5-ffff-4e24-85c1-ecf6b9814712",
-			"time": 5,
+			"time": 4,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
@@ -545,7 +563,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				5
+				4
 			],
 			"allTests": [
 				{}
@@ -555,7 +573,7 @@
 			"id": "8561368f-6038-4b3c-901d-3bf5de45f67e",
 			"name": "LU04 Person-insert",
 			"url": "http://localhost:8080/DebtPortal-1/resource/person/create",
-			"time": 10,
+			"time": 39,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -563,7 +581,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				10
+				39
 			],
 			"allTests": [
 				{}
@@ -606,10 +624,10 @@
 			]
 		},
 		{
-			"id": "00e94941-c9ac-4c23-ab7f-2d15c3d941e4",
+			"id": "af1e8c76-5d6b-49e7-a1cd-769347dece9a",
 			"name": "LU05 Credit-read: invalid uuid",
 			"url": "http://localhost:8080/DebtPortal-1/resource/credit/read?uuid=db117daa-xyz-4597-abcd-a69496797dc0",
-			"time": 12,
+			"time": 6,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -624,7 +642,7 @@
 				}
 			},
 			"times": [
-				12
+				6
 			],
 			"allTests": [
 				{
@@ -633,382 +651,13 @@
 			]
 		},
 		{
-			"id": "d9654e23-ed42-4082-8f1c-5d071ca4f5d1",
+			"id": "f7b96657-8d7e-48c5-bf38-a8e78ab56eea",
 			"name": "LU05 Credit-read: missing uuid",
 			"url": "http://localhost:8080/DebtPortal-1/DebtPortal-1/resource/credit/read",
-			"time": 7,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "f1ec3b84-a005-4d6c-9f35-e66622107980",
-			"name": "LU05 Credit-create: description missing",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
-			"time": 7,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "88bfd631-9545-44be-a140-d62ddd44726f",
-			"name": "LU05 Credit-create: description too short",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
-			"time": 8,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				8
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "1d2ac711-ea8e-431c-ab78-c268efd9f879",
-			"name": "LU05 Credit-create: description too long",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
-			"time": 7,
-			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error"
-			},
-			"tests": {
-				"Status test": false
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status test": false
-				}
-			]
-		},
-		{
-			"id": "8f44f3fa-c7b2-440e-8791-846e1853dfd5",
-			"name": "LU05 Credit-create: price too low",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
-			"time": 6,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "c4ecbe90-32dd-4cc6-8a63-0d6de248aefd",
-			"name": "LU05 Credit-create: price too high",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
-			"time": 6,
-			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error"
-			},
-			"tests": {
-				"Status test": false
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 0,
-					"fail": 1
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Status test": false
-				}
-			]
-		},
-		{
-			"id": "cec11474-5532-44dc-9385-ccfee82838e2",
-			"name": "LU05 Credit-create: price missing",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
-			"time": 13,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				13
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "f8396271-685a-4ff6-b7c7-61bf743bacac",
-			"name": "LU05 Credit-create: price invalid",
-			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
-			"time": 7,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "d76312d9-1499-4e88-9e50-a6fb825373cf",
-			"name": "LU05: Restore files",
-			"url": "http://localhost:8080/DebtPortal-1/resource/test/restore",
-			"time": 24,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				24
-			],
-			"allTests": [
-				{}
-			]
-		},
-		{
-			"id": "f4db89f3-289f-4ba8-a8ee-f70becc9c3cf",
-			"name": "LU05 Debt-read: invalid uuid",
-			"url": "http://localhost:8080/DebtPortal-1/resource/debt/read?uuid=db117daa-xyz-4597-abcd-a69496797dc0",
-			"time": 6,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "62b2a835-bf11-4763-9e11-a3a7db608bac",
-			"name": "LU05 Debt-read: missing uuid",
-			"url": "http://localhost:8080/DebtPortal-1/DebtPortal-1/resource/debt/read",
-			"time": 4,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				4
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "437fedff-4275-42e1-a8ed-2bc923ed4707",
-			"name": "LU05 Debt-create: description missing",
-			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
-			"time": 11,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				11
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "8f8f50eb-9e3c-4e56-9f41-3036381f9ada",
-			"name": "LU05 Debt-create: description too short",
-			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
-			"time": 6,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "f6518d13-3c4d-4776-a8a9-ca4a5d8cf613",
-			"name": "LU05 Debt-create: description too long",
-			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
-			"time": 8,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				8
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "96f8b588-0dda-445b-98a8-81062fab33f9",
-			"name": "LU05 Debt-create: price too low",
-			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
 			"time": 5,
 			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
+				"code": 404,
+				"name": "Not Found"
 			},
 			"tests": {
 				"Status test": true
@@ -1029,10 +678,10 @@
 			]
 		},
 		{
-			"id": "7956ec68-5520-44a7-b48e-b925a7cf5b75",
-			"name": "LU05 Debt-create: price too high",
-			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
-			"time": 18,
+			"id": "64576a01-24f8-42cc-8871-7c7fd2b5b138",
+			"name": "LU05 Credit-create: description missing",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
+			"time": 21,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1047,7 +696,376 @@
 				}
 			},
 			"times": [
-				18
+				21
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "76fc1579-c8d9-44ff-a9fe-e62867d16820",
+			"name": "LU05 Credit-create: description too short",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "090289e5-696a-4de1-a75e-a32a372fe747",
+			"name": "LU05 Credit-create: description too long",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "b9fb1f72-56dc-4a20-8878-5becb7f452ab",
+			"name": "LU05 Credit-create: price too low",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
+			"time": 33,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "b6c3025d-afb1-43dd-bd2d-1dbcb57d845b",
+			"name": "LU05 Credit-create: price too high",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "f9449929-f9ec-4387-a0fc-02bc48fc1d48",
+			"name": "LU05 Credit-create: price missing",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "93ae20fe-6e6b-458b-b1cc-1009dadbe7fa",
+			"name": "LU05 Credit-create: price invalid",
+			"url": "http://localhost:8080/DebtPortal-1/resource/credit/create",
+			"time": 15,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "d76312d9-1499-4e88-9e50-a6fb825373cf",
+			"name": "LU05: Restore files",
+			"url": "http://localhost:8080/DebtPortal-1/resource/test/restore",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f4db89f3-289f-4ba8-a8ee-f70becc9c3cf",
+			"name": "LU05 Debt-read: invalid uuid",
+			"url": "http://localhost:8080/DebtPortal-1/resource/debt/read?uuid=db117daa-xyz-4597-abcd-a69496797dc0",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "62b2a835-bf11-4763-9e11-a3a7db608bac",
+			"name": "LU05 Debt-read: missing uuid",
+			"url": "http://localhost:8080/DebtPortal-1/DebtPortal-1/resource/debt/read",
+			"time": 5,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "437fedff-4275-42e1-a8ed-2bc923ed4707",
+			"name": "LU05 Debt-create: description missing",
+			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "8f8f50eb-9e3c-4e56-9f41-3036381f9ada",
+			"name": "LU05 Debt-create: description too short",
+			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "f6518d13-3c4d-4776-a8a9-ca4a5d8cf613",
+			"name": "LU05 Debt-create: description too long",
+			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "96f8b588-0dda-445b-98a8-81062fab33f9",
+			"name": "LU05 Debt-create: price too low",
+			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
+			"time": 17,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "7956ec68-5520-44a7-b48e-b925a7cf5b75",
+			"name": "LU05 Debt-create: price too high",
+			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
 			],
 			"allTests": [
 				{
@@ -1059,7 +1077,7 @@
 			"id": "14105973-ba6d-4ff9-a215-341f7c9ca83b",
 			"name": "LU05 Debt-create: price missing",
 			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
-			"time": 8,
+			"time": 10,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1074,7 +1092,7 @@
 				}
 			},
 			"times": [
-				8
+				10
 			],
 			"allTests": [
 				{
@@ -1086,7 +1104,7 @@
 			"id": "55c7c1be-95b2-4dd7-8de3-ea5767f77be1",
 			"name": "LU05 Debt-create: price invalid",
 			"url": "http://localhost:8080/DebtPortal-1/resource/debt/create",
-			"time": 8,
+			"time": 7,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1101,7 +1119,7 @@
 				}
 			},
 			"times": [
-				8
+				7
 			],
 			"allTests": [
 				{
@@ -1113,7 +1131,7 @@
 			"id": "bd8a6ed1-aec6-4dc2-95fa-34d69c828d9a",
 			"name": "LU07.1: login failed",
 			"url": "http://localhost:8080/DebtPortal-1/resource/user/login",
-			"time": 6,
+			"time": 5,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -1121,7 +1139,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				6
+				5
 			],
 			"allTests": [
 				{}
@@ -1131,7 +1149,7 @@
 			"id": "8292ee29-16db-45aa-a717-54c6695ae195",
 			"name": "LU07.2: login successful",
 			"url": "http://localhost:8080/DebtPortal-1/resource/user/login",
-			"time": 3,
+			"time": 5,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -1139,7 +1157,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				3
+				5
 			],
 			"allTests": [
 				{}
@@ -1147,19 +1165,19 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 397,
+	"totalTime": 922,
 	"collection": {
 		"requests": [
 			{
-				"id": "07c40d9e-cff6-4eca-84b3-c22fa573bf19",
+				"id": "68ca6d32-3b17-478e-b7c4-173f430df2e4",
 				"method": "GET"
 			},
 			{
-				"id": "19cde488-db8a-4f15-b3b0-5bc9cc910706",
+				"id": "8d709659-16a3-4e9c-9b67-7910084fbe12",
 				"method": "GET"
 			},
 			{
-				"id": "89eeb876-68eb-43fb-880f-92309ce22da8",
+				"id": "c31d41d2-673d-4036-8108-7f1c336c74eb",
 				"method": "GET"
 			},
 			{
@@ -1191,23 +1209,27 @@
 				"method": "GET"
 			},
 			{
-				"id": "f580c23c-92ea-4415-8747-92c1f50e2557",
-				"method": "DELETE"
+				"id": "656a7d80-b387-4e11-a63f-5a68527b09f7",
+				"method": "GET"
 			},
 			{
-				"id": "7e5bb11b-8565-4785-9f66-3c2c9c145289",
-				"method": "DELETE"
-			},
-			{
-				"id": "dc76469c-049b-410a-b804-df6c68e2632b",
+				"id": "abc3ad0a-5702-45c7-8830-5163f18b027d",
 				"method": "POST"
 			},
 			{
-				"id": "5e8af162-b7c8-4ae2-ae0a-273f673daafa",
+				"id": "876ded19-3164-4f81-91ac-652e3c62562b",
+				"method": "DELETE"
+			},
+			{
+				"id": "934cb272-9562-4770-8967-15514ee96b23",
+				"method": "DELETE"
+			},
+			{
+				"id": "8e0971f2-1c9d-4128-a14a-ea6cc2f2774d",
 				"method": "PUT"
 			},
 			{
-				"id": "752a7e4e-8edf-4726-a6e2-886ee6a1ba57",
+				"id": "75632e0b-4e49-41e7-acf5-8868dc19d393",
 				"method": "PUT"
 			},
 			{
@@ -1255,39 +1277,39 @@
 				"method": "PUT"
 			},
 			{
-				"id": "00e94941-c9ac-4c23-ab7f-2d15c3d941e4",
+				"id": "af1e8c76-5d6b-49e7-a1cd-769347dece9a",
 				"method": "GET"
 			},
 			{
-				"id": "d9654e23-ed42-4082-8f1c-5d071ca4f5d1",
+				"id": "f7b96657-8d7e-48c5-bf38-a8e78ab56eea",
 				"method": "GET"
 			},
 			{
-				"id": "f1ec3b84-a005-4d6c-9f35-e66622107980",
+				"id": "64576a01-24f8-42cc-8871-7c7fd2b5b138",
 				"method": "POST"
 			},
 			{
-				"id": "88bfd631-9545-44be-a140-d62ddd44726f",
+				"id": "76fc1579-c8d9-44ff-a9fe-e62867d16820",
 				"method": "POST"
 			},
 			{
-				"id": "1d2ac711-ea8e-431c-ab78-c268efd9f879",
+				"id": "090289e5-696a-4de1-a75e-a32a372fe747",
 				"method": "POST"
 			},
 			{
-				"id": "8f44f3fa-c7b2-440e-8791-846e1853dfd5",
+				"id": "b9fb1f72-56dc-4a20-8878-5becb7f452ab",
 				"method": "POST"
 			},
 			{
-				"id": "c4ecbe90-32dd-4cc6-8a63-0d6de248aefd",
+				"id": "b6c3025d-afb1-43dd-bd2d-1dbcb57d845b",
 				"method": "POST"
 			},
 			{
-				"id": "cec11474-5532-44dc-9385-ccfee82838e2",
+				"id": "f9449929-f9ec-4387-a0fc-02bc48fc1d48",
 				"method": "POST"
 			},
 			{
-				"id": "f8396271-685a-4ff6-b7c7-61bf743bacac",
+				"id": "93ae20fe-6e6b-458b-b1cc-1009dadbe7fa",
 				"method": "POST"
 			},
 			{

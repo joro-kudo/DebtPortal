@@ -59,8 +59,8 @@
 											"pm.test(\"Data test\", function() {",
 											"    pm.response.to.be.json;",
 											"    const responseJson = pm.response.json();",
-											"    pm.expect(responseJson.description).to.eql(\"The Shadow of What Was Lost\");",
-											"    pm.expect(responseJson.price).to.eql(50);",
+											"    pm.expect(responseJson.description).to.eql(\"credit5 cool\");",
+											"    pm.expect(responseJson.price).to.eql(5);",
 											"})"
 										],
 										"type": "text/javascript"
@@ -170,9 +170,16 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
 						"url": {
 							"raw": "localhost:8080/DebtPortal-1/resource/debt/list",
 							"host": [
@@ -211,9 +218,16 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
 						"url": {
 							"raw": "localhost:8080/DebtPortal-1/resource/debt/read?uuid=2a16f85a-fd50-414f-9440-9a538d890771",
 							"host": [
@@ -406,6 +420,73 @@
 					"name": "credit",
 					"item": [
 						{
+							"name": "LU04: restore files",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/DebtPortal-1/resource/test/restore",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"DebtPortal-1",
+										"resource",
+										"test",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LU04 Credit-insert",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "description",
+											"value": "A new credit",
+											"type": "text"
+										},
+										{
+											"key": "creditUUID",
+											"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
+											"type": "text"
+										},
+										{
+											"key": "personUUID",
+											"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/DebtPortal-1/resource/credit/create",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"DebtPortal-1",
+										"resource",
+										"credit",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "LU04 Credit-delete",
 							"event": [
 								{
@@ -424,7 +505,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/DebtPortal-1/resource/credit/delete?uuid=db117daa-e295-4597-abcd-a69496797dc0",
+									"raw": "localhost:8080/DebtPortal-1/resource/credit/delete?uuid=672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 									"host": [
 										"localhost"
 									],
@@ -438,7 +519,7 @@
 									"query": [
 										{
 											"key": "uuid",
-											"value": "db117daa-e295-4597-abcd-a69496797dc0"
+											"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b"
 										}
 									]
 								}
@@ -480,47 +561,6 @@
 											"key": "uuid",
 											"value": "db117daa-e295-4597-0000-a69496797dc0"
 										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "LU04 Credit-insert",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "description",
-											"value": "A new credit",
-											"type": "text"
-										},
-										{
-											"key": "personUUID",
-											"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
-											"type": "text"
-										},
-										{
-											"key": "price",
-											"value": "2.95",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:8080/DebtPortal-1/resource/credit/create",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"DebtPortal-1",
-										"resource",
-										"credit",
-										"create"
 									]
 								}
 							},
@@ -1128,13 +1168,18 @@
 									"mode": "urlencoded",
 									"urlencoded": [
 										{
+											"key": "creditUUID",
+											"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
+											"type": "text"
+										},
+										{
 											"key": "personUUID",
-											"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+											"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "price",
-											"value": "2.95",
+											"value": "4",
 											"type": "text"
 										}
 									]
@@ -1178,17 +1223,22 @@
 									"urlencoded": [
 										{
 											"key": "description",
-											"value": "Do",
+											"value": "a",
+											"type": "text"
+										},
+										{
+											"key": "creditUUID",
+											"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "personUUID",
-											"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+											"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "price",
-											"value": "2.95",
+											"value": "4",
 											"type": "text"
 										}
 									]
@@ -1232,17 +1282,22 @@
 									"urlencoded": [
 										{
 											"key": "description",
-											"value": "This credit description is simply much too long to be used",
+											"value": "roflcopter roflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflroflv",
+											"type": "text"
+										},
+										{
+											"key": "creditUUID",
+											"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "personUUID",
-											"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+											"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "price",
-											"value": "2.95",
+											"value": "4",
 											"type": "text"
 										}
 									]
@@ -1286,17 +1341,22 @@
 									"urlencoded": [
 										{
 											"key": "description",
-											"value": "A tale of tales",
+											"value": "abcdefgh",
+											"type": "text"
+										},
+										{
+											"key": "creditUUID",
+											"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "personUUID",
-											"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+											"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "price",
-											"value": "0.01",
+											"value": "0.004",
 											"type": "text"
 										}
 									]
@@ -1340,17 +1400,22 @@
 									"urlencoded": [
 										{
 											"key": "description",
-											"value": "A tale of tales",
+											"value": "aertzuzasdf",
+											"type": "text"
+										},
+										{
+											"key": "creditUUID",
+											"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "personUUID",
-											"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+											"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "price",
-											"value": "205.75",
+											"value": "47654567876",
 											"type": "text"
 										}
 									]
@@ -1394,12 +1459,17 @@
 									"urlencoded": [
 										{
 											"key": "description",
-											"value": "A tale of tales",
+											"value": "a",
+											"type": "text"
+										},
+										{
+											"key": "creditUUID",
+											"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "personUUID",
-											"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+											"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										}
 									]
@@ -1443,17 +1513,22 @@
 									"urlencoded": [
 										{
 											"key": "description",
-											"value": "A tale of tales",
+											"value": "a",
+											"type": "text"
+										},
+										{
+											"key": "creditUUID",
+											"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "personUUID",
-											"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+											"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "price",
-											"value": "3.5.9",
+											"value": "4rb",
 											"type": "text"
 										}
 									]
