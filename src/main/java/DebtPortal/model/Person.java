@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import javax.ws.rs.FormParam;
 
 /**
- * a debt person
+ * a debitor/creditor person
  */
 @Data
 public class Person {

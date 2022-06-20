@@ -209,7 +209,9 @@ public final class DataHandler {
             return false;
         }
     }
-
+/**
+ * reads the role of the user
+ * */
     public String readUserRole(String username, String password) {
         for (User user : getUserList()) {
             if (user.getUsername().equals(username) &&

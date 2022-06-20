@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="author" content="Marcel Suter"/>
-  <meta name="copyright" content="FG ICT - Bildungszentrum Zürichsee"/>
-  <meta name="project" content="Bookshelf"/>
-  <meta name="description" content="book form edit"/>
-  <title>Buch bearbeiten</title>
+
+  <title>schuld bearbeiten</title>
   <script src="./js/debtedit.js"></script>
   <script src="./js/util.js"></script>
 </head>
@@ -14,11 +10,11 @@
 <nav id="nav">
   <span id="message" style="color: red;"></span>
 </nav>
-<h3>Buch bearbeiten</h3>
+<h3>schuld bearbeiten</h3>
 <form id="debteditForm" name="sebtedit">
   <table>
     <tr>
-      <td><label for="description">Buchtitel</label></td>
+      <td><label for="description">beschreibung</label></td>
       <td>
         <input id="description" name="description" type="text" size="30" minlength="2" maxlength="30" required/>
         <label for="debtUUID"></label><input id="debtUUID" name="debtUUID" />
@@ -26,7 +22,7 @@
     </tr>
 
     <tr>
-      <td><label for="person">Verlag</label></td>
+      <td><label for="person">schuldner</label></td>
       <td>
         <select id="person" name="personUUID" required>
         </select>
