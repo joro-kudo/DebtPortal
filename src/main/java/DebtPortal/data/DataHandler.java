@@ -210,6 +210,23 @@ public final class DataHandler {
             return false;
         }
     }
+    /**
+     * reads a user by the username/password provided
+     *
+     * @param username  the username
+     * @param password  the password
+     * @return user-object
+     */
+    public static User readUser(String username, String password) {
+        User user = new User();
+        for (User entry : getUserList()) {
+            if (entry.getUsername().equals(username) &&
+                    entry.getPassword().equals(password)) {
+                user = entry;
+            }
+        }
+        return user;
+    }
 /**
  * reads the role of the user
  * */
