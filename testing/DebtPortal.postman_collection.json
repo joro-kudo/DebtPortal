@@ -6,6 +6,150 @@
 	},
 	"item": [
 		{
+			"name": "setup",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "ammanna",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "geheim",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/DebtPortal-1/resource/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"DebtPortal-1",
+								"resource",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LU04 Credit-insert Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "description",
+									"value": "expected Credit",
+									"type": "text"
+								},
+								{
+									"key": "creditUUID",
+									"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
+									"type": "text"
+								},
+								{
+									"key": "creditorUUID",
+									"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "14.0",
+									"type": "text"
+								},
+								{
+									"key": "debitorUUID",
+									"value": "fb349088-3680-41be-b9e0-82fc900f5527",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/DebtPortal-1/resource/credit/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"DebtPortal-1",
+								"resource",
+								"credit",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LU04 Debt-insert Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "description",
+									"value": "delete me",
+									"type": "text"
+								},
+								{
+									"key": "debtUUID",
+									"value": "e1e4d5ce-eb27-484b-a17f-91c298017ae1",
+									"type": "text"
+								},
+								{
+									"key": "creditor",
+									"value": "fb349088-3680-41be-b9e0-82fc900f5527",
+									"type": "text"
+								},
+								{
+									"key": "debitor",
+									"value": "5e20be66-3ce9-45f0-92c8-06f0f4182273",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "4.0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/DebtPortal-1/resource/debt/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"DebtPortal-1",
+								"resource",
+								"debt",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "LU03_Read",
 			"item": [
 				{
@@ -59,8 +203,8 @@
 											"pm.test(\"Data test\", function() {",
 											"    pm.response.to.be.json;",
 											"    const responseJson = pm.response.json();",
-											"    pm.expect(responseJson.description).to.eql(\"credit5 cool\");",
-											"    pm.expect(responseJson.price).to.eql(5);",
+											"    pm.expect(responseJson.description).to.eql(\"expected Credit\");",
+											"    pm.expect(responseJson.price).to.eql(14.0);",
 											"})"
 										],
 										"type": "text/javascript"
@@ -71,7 +215,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/DebtPortal-1/resource/credit/read?uuid=2a16f85a-fd60-414f-9440-9a538d890772",
+									"raw": "localhost:8080/DebtPortal-1/resource/credit/read?uuid=672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 									"host": [
 										"localhost"
 									],
@@ -85,7 +229,7 @@
 									"query": [
 										{
 											"key": "uuid",
-											"value": "2a16f85a-fd60-414f-9440-9a538d890772"
+											"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b"
 										}
 									]
 								}
@@ -210,8 +354,8 @@
 									"pm.test(\"Data test\", function() {",
 									"    pm.response.to.be.json;",
 									"    const responseJson = pm.response.json();",
-									"    pm.expect(responseJson.description).to.eql(\"5$ for that Beer\");",
-									"    pm.expect(responseJson.price).to.eql(5);",
+									"    pm.expect(responseJson.description).to.eql(\"this is expected\");",
+									"    pm.expect(responseJson.price).to.eql(12.0);",
 									"})"
 								],
 								"type": "text/javascript"
@@ -229,7 +373,7 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "localhost:8080/DebtPortal-1/resource/debt/read?uuid=2a16f85a-fd50-414f-9440-9a538d890771",
+							"raw": "localhost:8080/DebtPortal-1/resource/debt/read?uuid=ee34378e-8819-4085-9ee0-254ac183a58a",
 							"host": [
 								"localhost"
 							],
@@ -243,7 +387,7 @@
 							"query": [
 								{
 									"key": "uuid",
-									"value": "2a16f85a-fd50-414f-9440-9a538d890771"
+									"value": "ee34378e-8819-4085-9ee0-254ac183a58a"
 								}
 							]
 						}
@@ -456,16 +600,22 @@
 										{
 											"key": "creditUUID",
 											"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
-											"key": "personUUID",
+											"key": "creditorUUID",
 											"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 											"type": "text"
 										},
 										{
 											"key": "price",
 											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "debitorUUID",
+											"value": "fb349088-3680-41be-b9e0-82fc900f5527",
 											"type": "text"
 										}
 									]
@@ -585,13 +735,18 @@
 											"type": "text"
 										},
 										{
-											"key": "personUUID",
+											"key": "debitorUUID",
 											"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
 											"type": "text"
 										},
 										{
 											"key": "price",
 											"value": "2.95",
+											"type": "text"
+										},
+										{
+											"key": "creditorUUID",
+											"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
 											"type": "text"
 										}
 									]
@@ -695,18 +850,24 @@
 									"type": "text"
 								},
 								{
-									"key": "debtUUID",
-									"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "creditorUUID",
+									"value": "fb349088-3680-41be-b9e0-82fc900f5527",
 									"type": "text"
 								},
 								{
-									"key": "personUUID",
-									"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
+									"key": "debitorUUID",
+									"value": "5e20be66-3ce9-45f0-92c8-06f0f4182273",
 									"type": "text"
 								},
 								{
 									"key": "price",
-									"value": "4",
+									"value": "4.0",
 									"type": "text"
 								}
 							]
@@ -728,86 +889,6 @@
 					"response": []
 				},
 				{
-					"name": "LU04 Debt-delete",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status test\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/DebtPortal-1/resource/debt/delete?uuid=672d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"DebtPortal-1",
-								"resource",
-								"debt",
-								"delete"
-							],
-							"query": [
-								{
-									"key": "uuid",
-									"value": "672d6b4d-e84e-41e9-87d1-5a7ff5fb440b"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "LU04 Debt-delete: uuid not found",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status test\", function () {",
-									"    pm.response.to.have.status(410);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/DebtPortal-1/resource/debt/delete?uuid=db117daa-e295-4597-0000-a69496797dc0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"DebtPortal-1",
-								"resource",
-								"debt",
-								"delete"
-							],
-							"query": [
-								{
-									"key": "uuid",
-									"value": "db117daa-e295-4597-0000-a69496797dc0"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "LU04 Debt-update",
 					"request": {
 						"method": "PUT",
@@ -817,7 +898,7 @@
 							"urlencoded": [
 								{
 									"key": "debtUUID",
-									"value": "c746a291-0ef9-4b2a-8268-392b12d636bd",
+									"value": "e1e4d5ce-eb27-484b-a17f-91c298017ae1",
 									"type": "text"
 								},
 								{
@@ -826,13 +907,18 @@
 									"type": "text"
 								},
 								{
-									"key": "personUUID",
-									"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+									"key": "debitorUUID",
+									"value": "5e20be66-3ce9-45f0-92c8-06f0f4182273",
 									"type": "text"
 								},
 								{
 									"key": "price",
 									"value": "2.95",
+									"type": "text"
+								},
+								{
+									"key": "creditorUUID",
+									"value": "472d6b4d-e84e-41e9-87d1-5a7ff5fb440b",
 									"type": "text"
 								}
 							]
@@ -894,6 +980,90 @@
 								"resource",
 								"debt",
 								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LU04 Debt-delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:8080/DebtPortal-1/resource/debt/delete?uuid=e1e4d5ce-eb27-484b-a17f-91c298017ae1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"DebtPortal-1",
+								"resource",
+								"debt",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "e1e4d5ce-eb27-484b-a17f-91c298017ae1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LU04 Debt-delete: uuid not found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(410);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/DebtPortal-1/resource/debt/delete?uuid=db117daa-e295-4597-0000-a69496797dc0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"DebtPortal-1",
+								"resource",
+								"debt",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "db117daa-e295-4597-0000-a69496797dc0"
+								}
 							]
 						}
 					},
@@ -2065,12 +2235,12 @@
 							"urlencoded": [
 								{
 									"key": "username",
-									"value": "musterh",
+									"value": "fake",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "passwo",
+									"value": "drowssap",
 									"type": "text"
 								}
 							]
@@ -2102,12 +2272,12 @@
 							"urlencoded": [
 								{
 									"key": "username",
-									"value": "musterh",
+									"value": "ammanna",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "passwort",
+									"value": "geheim",
 									"type": "text"
 								}
 							]
@@ -2124,6 +2294,43 @@
 								"resource",
 								"user",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "Danny",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Danny123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/DebtPortal-1/resource/user/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"DebtPortal-1",
+								"resource",
+								"user",
+								"logout"
 							]
 						}
 					},
