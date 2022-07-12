@@ -91,7 +91,8 @@ function showDebt(data) {
 
     document.getElementById("description").value = data.description;
     document.getElementById("price").value = data.price;
-    document.getElementById("person").value = data.personUUID;
+    document.getElementById("debitor").value = data.debitorUUID;
+    document.getElementById("creditor").value = data.creditorUUID;
 
 }
 
@@ -122,12 +123,17 @@ function readPeople() {
  * @param data
  */
 function showPeople(data) {
-    let dropdown = document.getElementById("person");
+    let dropdown = document.getElementById("debitor");
+    let dropdown2 = document.getElementById("debitor");
+
+
     data.forEach(person => {
         let option = document.createElement("option");
         option.text = person.personName;
         option.value = person.personUUID;
         dropdown.add(option);
+        dropdown2.add(option);
+
     })
 }
 
