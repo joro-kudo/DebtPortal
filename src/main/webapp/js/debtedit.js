@@ -3,7 +3,13 @@
  * @author Marcel Suter
  */
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("debtUUID").value = uuidv4()
+
+    if (getQueryParam("uuid")== null){
+        document.getElementById("debtUUID").value = uuidv4()
+
+    }else{
+        document.getElementById("debtUUID").value=   getQueryParam("uuid")
+    }
 
     readPeople();
     readDebt();
