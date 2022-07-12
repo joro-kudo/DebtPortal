@@ -13,14 +13,13 @@
     <span id="message" style="color: red;"></span>
 </nav>
 <h3>schuld bearbeiten</h3>
-<form id="debteditForm" name="sebtedit">
+<form id="debteditForm" name="debtedit">
     <table>
         <tr>
             <td><label for="description">beschreibung</label></td>
             <td>
                 <input id="description" name="description" type="text" size="30" minlength="2" maxlength="30" required/>
-                <label for="debtUUID"></label><input id="debtUUID" name="debtUUID"/>
-            </td>
+                <input id="debtUUID" name="debtUUID" type="hidden"/>            </td>
         </tr>
 
         <tr>
