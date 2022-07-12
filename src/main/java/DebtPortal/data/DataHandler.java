@@ -14,7 +14,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * reads and writes the data in the JSON-files
@@ -45,6 +48,7 @@ public final class DataHandler {
 
     /**
      * reads all debts
+     *
      * @return list of debts
      */
     public static List<Debt> readAllDebts() {
@@ -53,6 +57,7 @@ public final class DataHandler {
 
     /**
      * reads a debt by its uuid
+     *
      * @param debtUUID
      * @return the Debt (null=not found)
      */
@@ -85,8 +90,9 @@ public final class DataHandler {
 
     /**
      * deletes a debt identified by the debtUUID
-     * @param debtUUID  the key
-     * @return  success=true/false
+     *
+     * @param debtUUID the key
+     * @return success=true/false
      */
     public static boolean deleteDebt(String debtUUID) {
         Debt debt = readDebtByUUID(debtUUID);
@@ -98,8 +104,10 @@ public final class DataHandler {
             return false;
         }
     }
-/**
+
+    /**
      * reads all credits
+     *
      * @return list of credits
      */
     public static List<Credit> readAllCredits() {
@@ -108,6 +116,7 @@ public final class DataHandler {
 
     /**
      * reads a credit by its uuid
+     *
      * @param creditUUID
      * @return the Credit (null=not found)
      */
@@ -141,8 +150,9 @@ public final class DataHandler {
 
     /**
      * deletes a credit identified by the creditUUID
-     * @param creditUUID  the key
-     * @return  success=true/false
+     *
+     * @param creditUUID the key
+     * @return success=true/false
      */
     public static boolean deleteCredit(String creditUUID) {
         Credit credit = readCreditByUUID(creditUUID);
@@ -156,7 +166,71 @@ public final class DataHandler {
     }
 
     /**
+     * reads all the publishers matching the filter
+     *
+     * @param fieldname the field to apply the filter
+     * @param filter    the value of the filter
+     * @param sortOrder the sorting order (ASC or DESC)
+     * @return list of publishers
+     */
+    public static List<Person> readSortedPeople(
+            String fieldname,
+            String filter,
+            String sortOrder
+    ) {
+        final Comparator<Person> comparePerson = new Comparator<Person>() {
+            @Override
+            public int compare(Person person1, Person person2) {
+                int result = 0;
+                if (fieldname.equals("personName")) {
+                    result = person1.getPersonName().compareTo(person2.getPersonName());
+                }
+
+                if (sortOrder.equals("DESC")) {
+                    result *= -1;
+                }
+                return result;
+            }
+        };
+
+        List<Person> persons;
+        if (filter == null) {
+            persons = getPersonList();
+        } else {
+            persons = readFilteredPeople(fieldname, filter);
+        }
+
+        persons.sort(comparePerson);
+
+        return persons;
+    }
+
+    /**
+     * reads all the persons matching the filter
+     *
+     * @param fieldname the field to apply the filter
+     * @param filter    the value of the filter
+     * @return list of persons
+     */
+    public static List<Person> readFilteredPeople(
+            String fieldname,
+            String filter
+    ) {
+        if (fieldname.equals("personName")) {
+            Predicate<Person> predicate = person ->
+                    person.getPersonName().toLowerCase().contains(filter.toLowerCase());
+
+            return DataHandler.getPersonList().
+                    stream().
+                    filter(predicate).
+                    collect(Collectors.toList());
+        }
+        return getPersonList();
+    }
+
+    /**
      * reads all people
+     *
      * @return list of debts
      */
     public static List<Person> readAllPeople() {
@@ -165,6 +239,7 @@ public final class DataHandler {
 
     /**
      * reads a person by its uuid
+     *
      * @param personUUID
      * @return the Person (null=not found)
      */
@@ -197,8 +272,9 @@ public final class DataHandler {
 
     /**
      * deletes a person identified by the personUUID
-     * @param personUUID  the key
-     * @return  success=true/false
+     *
+     * @param personUUID the key
+     * @return success=true/false
      */
     public static boolean deletePerson(String personUUID) {
         Person person = readPersonByUUID(personUUID);
@@ -210,11 +286,12 @@ public final class DataHandler {
             return false;
         }
     }
+
     /**
      * reads a user by the username/password provided
      *
-     * @param username  the username
-     * @param password  the password
+     * @param username the username
+     * @param password the password
      * @return user-object
      */
     public static User readUser(String username, String password) {
@@ -227,9 +304,10 @@ public final class DataHandler {
         }
         return user;
     }
-/**
- * reads the role of the user
- * */
+
+    /**
+     * reads the role of the user
+     */
     public String readUserRole(String username, String password) {
         for (User user : getUserList()) {
             if (user.getUsername().equals(username) &&
@@ -260,17 +338,94 @@ public final class DataHandler {
     }
 
     /**
+     * reads and sorts all the debts matching the filter
+     *
+     * @param sortField   the field to order by
+     * @param sortOrder   the sorting order (ASC or DESC)
+     * @param filterField the field to apply the filter
+     * @param filter      the value of the filter
+     * @return list of debts
+     */
+    public static List<Debt> readSortedDebts(
+            String sortField,
+            String sortOrder,
+            String filterField,
+            String filter
+
+    ) {
+        final Comparator<Debt> compareDebts = new Comparator<Debt>() {
+            @Override
+            public int compare(Debt debt1, Debt debt2) {
+                int result = 0;
+                if (sortField.equals("title")) {
+                    result = debt1.getDescription().compareTo(debt2.getDescription());
+                } else if (sortField.equals("price")) {
+                    result = debt1.getPrice().compareTo(debt2.getPrice());
+                } else if (sortField.equals("debitor")) {
+                    result = debt1.getDebitor().getPersonName().compareTo(debt2.getDebitor().getPersonName());
+                } else if (sortField.equals("creditor")) {
+                    result = debt1.getCreditor().getPersonName().compareTo(debt2.getCreditor().getPersonName());
+                }
+
+                if (sortOrder.equals("DESC")) {
+                    result *= -1;
+                }
+                return result;
+            }
+        };
+
+        List<Debt> debts;
+        if (filter == null || filter.equals("")) {
+            debts = getDebtList();
+        } else {
+            debts = readFilteredDebts(filterField, filter);
+        }
+
+        debts.sort(compareDebts);
+
+        return debts;
+    }
+
+    /**
+     * reads all the debts matching the filter
+     *
+     * @param fieldname the field to apply the filter
+     * @param filter    the value of the filter
+     * @return list of publishers
+     */
+    public static List<Debt> readFilteredDebts(
+            String fieldname,
+            String filter
+    ) {
+
+
+        Predicate<Debt> predicate = null;
+        if (fieldname.equals("priceFilter")) {
+            predicate = debt ->
+                    debt.getPrice().toString().equals(filter);
+        } else if (fieldname.equals("personFilter")) {
+            predicate = debt ->
+                    debt.getDebitor().getPersonName().toLowerCase().contains(filter.toLowerCase());
+        }
+        return DataHandler.getDebtList().
+                stream().
+                filter(predicate).
+                collect(Collectors.toList());
+    }
+
+    /**
      * writes the debtList to the JSON-file
      */
     private static void writeDebtJSON() {
+
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
-        FileOutputStream fileOutputStream = null;
+        FileOutputStream fileOutputStream;
         Writer fileWriter;
 
-        String debtPath = Config.getProperty("debtJSON");
+        String debtpath = Config.getProperty("debtJSON");
         try {
-            fileOutputStream = new FileOutputStream(debtPath);
+            fileOutputStream = new FileOutputStream(debtpath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
             objectWriter.writeValue(fileWriter, getDebtList());
         } catch (IOException ex) {

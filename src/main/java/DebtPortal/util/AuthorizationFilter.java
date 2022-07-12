@@ -30,7 +30,7 @@ public class AuthorizationFilter implements javax.ws.rs.container.ContainerReque
     public void filter(ContainerRequestContext requestContext) {
         Method method = resourceInfo.getResourceMethod();
 
-        if(method.isAnnotationPresent(DenyAll.class)) {
+        if (method.isAnnotationPresent(DenyAll.class)) {
             requestContext.abortWith(Response.status(Response.Status.FORBIDDEN)
                     .entity("Access blocked for all users !!").build());
         } else if (!method.isAnnotationPresent(PermitAll.class) &&
@@ -40,7 +40,7 @@ public class AuthorizationFilter implements javax.ws.rs.container.ContainerReque
 
             String userRole = getToken(requestContext.getHeaders());
 
-            if (userRole == null || !isUserAllowed(requiredRoles, userRole)){
+            if (userRole == null || !isUserAllowed(requiredRoles, userRole)) {
                 requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED)
                         .entity("You cannot access this resource").build());
             }
@@ -51,18 +51,19 @@ public class AuthorizationFilter implements javax.ws.rs.container.ContainerReque
 
     /**
      * checks if the userrole is sufficent to access the service
-     * @param requiredRoles  the required roles
-     * @param userRole  the role of this user
-     * @return  allowed true/false
+     *
+     * @param requiredRoles the required roles
+     * @param userRole      the role of this user
+     * @return allowed true/false
      */
-    private boolean isUserAllowed(final Set<String> requiredRoles, String userRole)
-    {
+    private boolean isUserAllowed(final Set<String> requiredRoles, String userRole) {
         return (requiredRoles.contains(userRole));
     }
 
     /**
      * get the authorization token
-     * @param headers  the request headers
+     *
+     * @param headers the request headers
      * @return token
      */
     private String getToken(MultivaluedMap<String, String> headers) {

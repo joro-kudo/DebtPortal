@@ -25,8 +25,8 @@ function twoFAUser(event) {
             if (!response.ok) {
                 showMessage("Falsches Geheimwort", "error");
             } else if (response.status === 401) {
-                window.location.href = "./";}
-            else loginSuccess(response)
+                window.location.href = "./";
+            } else loginSuccess(response)
         })
         .catch(function (error) {
             console.log(error);

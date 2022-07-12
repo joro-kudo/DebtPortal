@@ -1,7 +1,6 @@
 package DebtPortal.service;
 
 
-
 import DebtPortal.data.DataHandler;
 import DebtPortal.model.User;
 import DebtPortal.util.JWToken;

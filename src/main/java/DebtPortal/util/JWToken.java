@@ -23,15 +23,17 @@ import java.util.Map;
 
 /**
  * a JSON WebToken
+ *
  * @author Marcel Suter BZZ
  */
 public class JWToken {
 
     /**
      * builds the token
-     * @param subject the token subject
+     *
+     * @param subject  the token subject
      * @param duration the duration of this token in minutes
-     * @param claims a map of claims
+     * @param claims   a map of claims
      * @return JSON web token as String
      */
     public static String buildToken(
@@ -54,18 +56,18 @@ public class JWToken {
             Date now = new Date();
             Date expiration = new Date(now.getTime() + duration * 60000);
 
-        return Jwts.builder()
-                .setIssuer("DebtPortal")
-                .setSubject(encrypt(
-                        subject,
-                        getJwtEncrypt(),
-                        salt
-                ))
-                .setClaims(claims)
-                .setExpiration(expiration)
-                .setIssuedAt(now)
-                .signWith(secretKey)
-                .compact();
+            return Jwts.builder()
+                    .setIssuer("DebtPortal")
+                    .setSubject(encrypt(
+                            subject,
+                            getJwtEncrypt(),
+                            salt
+                    ))
+                    .setClaims(claims)
+                    .setExpiration(expiration)
+                    .setIssuedAt(now)
+                    .signWith(secretKey)
+                    .compact();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -74,11 +76,12 @@ public class JWToken {
 
     /**
      * reads all claims from the token
-     * @param token  the token with all the claims
+     *
+     * @param token the token with all the claims
      * @return a map of the claims
      */
-    public static Map<String,String> readClaims(String token) {
-        Map<String,String> claimMap = new HashMap<>();
+    public static Map<String, String> readClaims(String token) {
+        Map<String, String> claimMap = new HashMap<>();
         Jws<Claims> jwsClaims;
         byte[] keyBytes = Config.getProperty("jwtSecret").getBytes(StandardCharsets.UTF_8);
         SecretKey secretKey = Keys.hmacShaKeyFor(keyBytes);
@@ -93,7 +96,7 @@ public class JWToken {
                     jwtKey,
                     salt
             );
-            claimMap.put("subject",subject         );
+            claimMap.put("subject", subject);
 
             for (Map.Entry<String, Object> entry : jwsClaims.getBody().entrySet()) {
                 String value = decrypt(
@@ -113,9 +116,10 @@ public class JWToken {
 
     /**
      * encrypts the string
-     * @author Lokesh Gupta (https://howtodoinjava.com/java/java-security/aes-256-encryption-decryption/)
-     * @param strToEncrypt  string to be encrypted
+     *
+     * @param strToEncrypt string to be encrypted
      * @return encrypted string
+     * @author Lokesh Gupta (https://howtodoinjava.com/java/java-security/aes-256-encryption-decryption/)
      */
     public static String encrypt(
             String strToEncrypt,
@@ -142,10 +146,11 @@ public class JWToken {
 
     /**
      * decrypts the string
-     * @author Lokesh Gupta (https://howtodoinjava.com/java/java-security/aes-256-encryption-decryption/)
-     * @param strToDecrypt  string to be dencrypted
-     * @param secret  the secret key
+     *
+     * @param strToDecrypt string to be dencrypted
+     * @param secret       the secret key
      * @return decrypted string
+     * @author Lokesh Gupta (https://howtodoinjava.com/java/java-security/aes-256-encryption-decryption/)
      */
     public static String decrypt(
             String strToDecrypt,
@@ -171,6 +176,7 @@ public class JWToken {
 
     /**
      * gets the jwtkey from the propierties
+     *
      * @return the jwtKey
      */
     private static String getJwtEncrypt() {

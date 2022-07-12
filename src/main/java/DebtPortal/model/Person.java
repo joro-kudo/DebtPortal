@@ -1,6 +1,6 @@
 package DebtPortal.model;
 
-import lombok.*;
+import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -17,6 +17,6 @@ public class Person {
     private String personUUID;
     @FormParam("personName")
     @NotEmpty
-    @Size(min=4, max=50)
+    @Size(min = 4, max = 50)
     private String personName;
 }
