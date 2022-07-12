@@ -37,7 +37,8 @@ function showDebtlist(data) {
         let row = tBody.insertRow(-1);
         row.insertCell(-1).innerHTML = debt.description;
         row.insertCell(-1).innerHTML = debt.price;
-        row.insertCell(-1).innerHTML = debt.person.personName;
+        row.insertCell(-1).innerHTML = debt.debitor.personName;
+        row.insertCell(-1).innerHTML = debt.creditor.personName;
 
 
         let button = document.createElement("button");

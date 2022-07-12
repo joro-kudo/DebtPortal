@@ -124,14 +124,20 @@ function readPeople() {
  */
 function showPeople(data) {
     let dropdown = document.getElementById("debitor");
-    let dropdown2 = document.getElementById("debitor");
+    let dropdown2 = document.getElementById("creditor");
 
 
-    data.forEach(person => {
+    data.forEach(debitor => {
         let option = document.createElement("option");
-        option.text = person.personName;
-        option.value = person.personUUID;
+        option.text = debitor.personName;
+        option.value = debitor.personUUID;
         dropdown.add(option);
+
+    })
+    data.forEach(creditor => {
+        let option = document.createElement("option");
+        option.text = creditor.personName;
+        option.value = creditor.personUUID;
         dropdown2.add(option);
 
     })
